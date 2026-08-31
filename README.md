@@ -69,7 +69,9 @@ Pada evaluasi proyek, Random Forest menghasilkan nilai R² sekitar **0,746**, le
 supermarket-sales-analysis/
 ├── README.md
 ├── data/
-│   └── synthetic_store_indonesia.xlsx
+│   ├── synthetic_store_indonesia.xlsx.part-aa
+│   ├── synthetic_store_indonesia.xlsx.part-ab
+│   └── synthetic_store_indonesia.xlsx.part-ac
 ├── dashboard/
 │   └── informasi_penjualan_supermarket_indonesia.pdf
 ├── model/
@@ -87,10 +89,28 @@ Buka tautan Looker Studio pada bagian Dashboard atau unduh file PDF pada folder 
 ### Model Orange
 
 1. Instal [Orange Data Mining](https://orangedatamining.com/).
-2. Unduh dataset pada folder `data`.
+2. Unduh seluruh bagian dataset pada folder `data`, lalu gabungkan kembali menjadi file Excel.
 3. Unduh file `.ows` pada folder `model`.
 4. Buka file workflow menggunakan Orange.
 5. Apabila sumber data tidak ditemukan otomatis, arahkan widget File ke dataset yang telah diunduh.
+
+### Menggabungkan Dataset Excel
+
+Dataset dibagi menjadi tiga bagian agar seluruh berkas submission dapat disimpan dengan utuh. Setelah ketiga file diunduh, jalankan salah satu perintah berikut dari folder `data`.
+
+Windows Command Prompt:
+
+```bat
+copy /b synthetic_store_indonesia.xlsx.part-aa+synthetic_store_indonesia.xlsx.part-ab+synthetic_store_indonesia.xlsx.part-ac synthetic_store_indonesia.xlsx
+```
+
+Linux/macOS:
+
+```bash
+cat synthetic_store_indonesia.xlsx.part-* > synthetic_store_indonesia.xlsx
+```
+
+File hasil penggabungan bernama `synthetic_store_indonesia.xlsx` dan dapat dibuka menggunakan Microsoft Excel atau perangkat lunak spreadsheet lain.
 
 ## Tools
 
